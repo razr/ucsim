@@ -33,16 +33,16 @@ SILENT		= @SILENT@
 OPT		?= 2
 CFLAGS          = @WALL_FLAG@ @CFLAGS@ -O$(OPT)
 CXXFLAGS        = @WALL_FLAG@ @CXXFLAGS@ -O$(OPT) $(PICOPT)
-LDFLAGS		= @LDFLAGS@
+LDFLAGS		= @LDFLAGS@ -rdynamic
 LIBS		= @LIBS@
 CURSES_LIBS	= @CURSES_LIBS@
 
 WINSOCK_AVAIL   = @WINSOCK_AVAIL@
-LDFLAGS		= @LDFLAGS@
+LDFLAGS		= @LDFLAGS@ -rdynamic
 
 EXEEXT		= @EXEEXT@
 UCSIM_LIBS	= -lmotorola -lsim -lucsimutil -lgui -lcmd -lsim \
-		  $(CURSES_LIBS) $(LIBS)
+		  $(CURSES_LIBS) $(LIBS) -ldl
 UCSIM_LIB_PREREQUES = \
 		  $(top_builddir)/libmotorola.a \
 		  $(top_builddir)/libcmd.a \

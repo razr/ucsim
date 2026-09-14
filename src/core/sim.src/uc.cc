@@ -42,6 +42,7 @@ Software Foundation, 59 Temple Place - Suite 330, Boston, MA
 //#include "newcmdcl.h"
 //#include "cmdutil.h"
 #include "cmd_uccl.h"
+#include "hwloadcl.h"
 #include "cmd_bpcl.h"
 #include "cmd_getcl.h"
 #include "cmd_setcl.h"
@@ -937,6 +938,10 @@ cl_uc::build_cmdset(class cl_cmdset *cmdset)
   cmdset->add(cmd= new cl_file_cmd("file", 0));
   cmd->init();
   cmd->add_name("load");
+
+  cmdset->add(cmd= new cl_loadhw_cmd("loadhw", 0));
+  cmd->init();
+  cmd->add_name("insmod");
 
   cmdset->add(cmd= new cl_dl_cmd("download", 0));
   cmd->init();
