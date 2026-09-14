@@ -17,10 +17,27 @@ apps:
 install:
 	$(MAKE) -C src install
 	$(MAKE) -C docs install
+	$(MAKE) install_sdk
+
+# ucSim hardware-plugin SDK (loadable cl_hw modules).
+prefix		= @prefix@
+exec_prefix	= @exec_prefix@
+datarootdir	= @datarootdir@
+datadir		= @datadir@
+includedir	= @includedir@
+
+.PHONY: install_sdk uninstall_sdk
+install_sdk:
+	cd sdk && ./export-headers.sh && \
+	  ./install.sh "$(DESTDIR)" "$(prefix)" "$(includedir)" "$(datadir)"
+
+uninstall_sdk:
+	rm -rf "$(DESTDIR)$(includedir)/ucsim" "$(DESTDIR)$(datadir)/ucsim/sdk"
 
 uninstall:
 	$(MAKE) -C src uninstall
 	$(MAKE) -C docs uninstall
+	$(MAKE) uninstall_sdk
 
 clean: local_clean sub_clean
 

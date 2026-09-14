@@ -1,0 +1,26 @@
+# Build artifacts
+*.o
+*.a
+*.so
+
+# Autotools-generated (from *.in by ./configure / config.status)
+/Makefile
+/config.log
+/config.status
+/src/common.mk
+/src/packages.mk
+/src/**/Makefile
+/src/**/Makefile.dep
+/docs/Makefile
+/src/core/utils.src/ddconfig.h
+/src/core/cmd.src/cmdlex.cc
+/src/core/cmd.src/cmdpars.cc
+/src/core/cmd.src/cmdpars.hh
+
+# Built simulator binaries
+/src/sims/*/ucsim_*
+/src/sims/*/s*
+
+# SDK: generated header export and compiled example plugin
+/sdk/include/
+/sdk/example/*.so
